@@ -1046,6 +1046,155 @@ footer {
     transform: translateY(46px);
 }
 
+#preloader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5a1d2b;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: relative;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-wrap img {
+    width: 119px;
+    position: relative;
+    z-index: 2;
+    animation: logoPulse 2.5s ease-in-out infinite,
+    logoGlitch 6s infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, .15)) drop-shadow(0 0 15px rgba(255, 255, 255, .08));
+}
+
+/* Holographic Scan */
+
+/* Rotating Halo */
+
+.logo-wrap::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 50%;
+    animation: rotateRing 10s linear infinite;
+}
+
+.logo-wrap::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px dashed rgb(255 255 255 / 6%);
+    border-radius: 50%;
+    animation: rotateRingReverse 7s linear infinite;
+}
+
+/* Background Grid */
+
+#preloader::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 38px,
+            rgba(255, 255, 255, .025) 40px
+    ),
+    repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 38px,
+            rgba(255, 255, 255, .025) 40px
+    );
+    opacity: .5;
+}
+
+/* Animations */
+
+@keyframes scan {
+
+    from {
+        transform: translateY(-70px);
+    }
+
+    to {
+        transform: translateY(70px);
+    }
+
+}
+
+@keyframes logoPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+}
+
+@keyframes rotateRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes rotateRingReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+
+}
+
+@keyframes logoGlitch {
+
+    0%, 95%, 100% {
+        transform: translateX(0);
+    }
+
+    96% {
+        transform: translateX(-2px);
+    }
+
+    97% {
+        transform: translateX(2px);
+    }
+
+    98% {
+        transform: translateX(-1px);
+    }
+
+    99% {
+        transform: translateX(1px);
+    }
+
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
     .about-grid, .vm-cards, .contact-grid, .founder-grid {
@@ -1120,5 +1269,9 @@ footer {
         padding: 16px 0;
         font-size: 0.8rem;
         flex-wrap: wrap;
+    }
+
+    #preloader span img {
+        object-fit: contain;
     }
 }
