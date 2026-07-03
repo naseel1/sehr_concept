@@ -96,6 +96,8 @@
         <img src="img/sehr r w.png" alt="Sehr Concepts">
     </div>
 </div>
+<div class="circle"></div>
+<div class="circle-follow"></div>
 <header id="siteHeader">
     <nav class="container">
         <div class="logo">
@@ -115,7 +117,7 @@
 </header>
 
 <!-- HERO SLIDER -->
-<section class="hero" id="home">
+<section class="hero process-section" id="home">
     <div class="slide slide1 active">
         <div class="slide-bg"></div>
         <div class="slide-watermark">SEHR</div>
@@ -163,7 +165,7 @@
 </section>
 
 <!-- ABOUT -->
-<section class="about" id="about">
+<section class="about process-section" id="about">
     <div class="container about-grid">
         <div class="about-text">
             <span class="eyebrow reveal">About Us</span>
@@ -192,7 +194,7 @@
 </section>
 
 <!-- VISION & MISSION -->
-<section class="vm" id="vision">
+<section class="vm process-section" id="vision">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow reveal">Our Mission &amp; Vision</span>
@@ -223,7 +225,7 @@
 </section>
 
 <!-- PROJECTS -->
-<section class="projects" id="projects">
+<section class="projects process-section" id="projects">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow reveal">Selected Renders</span>
@@ -232,7 +234,7 @@
                 commercial interiors.</p>
         </div>
         <div class="project-grid">
-            <div class="project-card reveal">
+            <div class="project-card reveal ">
                 <div class="render r1"></div>
                 <div class="project-view">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -323,7 +325,7 @@
 </section>
 
 <!-- SERVICES -->
-<section class="services" id="services">
+<section class="services process-section" id="services">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow reveal">What We Do</span>
@@ -366,7 +368,7 @@
 </section>
 
 <!-- FOUNDERS -->
-<section class="founders" id="founders">
+<section class="founders process-section" id="founders">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow reveal">The People Behind Sehr</span>
@@ -397,7 +399,7 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="contact process-section" id="contact">
     <div class="container">
         <div class="section-head">
             <span class="eyebrow reveal">Let's Start Something Beautiful</span>
@@ -482,7 +484,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="process-section">
     <div class="container footer-grid">
         <div class="footer-brand">
             <b>SEHR CONCEPTS</b>
@@ -524,6 +526,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>
     gsap.registerPlugin(ScrollTrigger);
     document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Sehr Concepts. All rights reserved.';
@@ -755,6 +758,31 @@
             .catch(() => {
                 alert("Network error. Please check your connection and try again.");
             });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var $circle = document.querySelector('.circle'),
+            $follow = document.querySelector('.circle-follow');
+
+        function moveCircle(e) {
+            gsap.to($circle, {duration: 0.3, x: e.clientX, y: e.clientY});
+            gsap.to($follow, {duration: 0.7, x: e.clientX, y: e.clientY});
+        }
+
+        window.addEventListener('mousemove', moveCircle);
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".process-section").ripples({
+            resolution: 256,
+            perturbance: 0.01,
+        });
+
     });
 </script>
 
