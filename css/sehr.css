@@ -284,12 +284,12 @@ header.scrolled .burger span {
 
 .slide1 .slide-bg {
     background: linear-gradient(100deg, rgba(36, 16, 22, 0.88) 0%, rgba(58, 18, 32, 0.72) 40%, rgba(58, 18, 32, 0.4) 75%),
-    url('img/sehr1.webp?auto=format&fit=crop&w=1800&q=80') center/cover;
+    url('/img/sehr1.webp?auto=format&fit=crop&w=1800&q=80') center/cover;
 }
 
 .slide2 .slide-bg {
     background: linear-gradient(100deg, rgba(36, 16, 22, 0.88) 0%, rgba(58, 18, 32, 0.72) 40%, rgba(58, 18, 32, 0.4) 75%),
-    url('img/IMG_3428.JPG?auto=format&fit=crop&w=1800&q=80') center/cover;
+    url('/img/IMG_3428.JPG?auto=format&fit=crop&w=1800&q=80') center/cover;
 }
 
 .slide-watermark {
@@ -627,27 +627,27 @@ header.scrolled .burger span {
 }
 
 .r1 {
-    background-image: url('img/IMG_2270.PNG?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/IMG_2270.PNG?auto=format&fit=crop&w=1000&q=80');
 }
 
 .r2 {
-    background-image: url('img/kitchen.jpeg?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/kitchen.jpeg?auto=format&fit=crop&w=1000&q=80');
 }
 
 .r3 {
-    background-image: url('img/bedroom.jpg?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/bedroom.jpg?auto=format&fit=crop&w=1000&q=80');
 }
 
 .r4 {
-    background-image: url('img/Dining room 3.jpg?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/Dining room 3.jpg?auto=format&fit=crop&w=1000&q=80');
 }
 
 .r5 {
-    background-image: url('img/tvroom.webp?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/tvroom.webp?auto=format&fit=crop&w=1000&q=80');
 }
 
 .r6 {
-    background-image: url('img/foyer.webp?auto=format&fit=crop&w=1000&q=80');
+    background-image: url('/img/foyer.webp?auto=format&fit=crop&w=1000&q=80');
 }
 
 .project-base {
