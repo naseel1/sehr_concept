@@ -93,12 +93,6 @@ PROJECT HERO
 
 }
 
-.project-category,
-.project-meta > div,
-.scroll-indicator {
-    opacity: 0;
-}
-
 .line {
     display: block;
     overflow: hidden;
@@ -588,16 +582,15 @@ FEATURED GALLERY
 
 @media (max-width: 991px) {
 
-    .hero-content {
 
-        left: 30px;
-        right: 30px;
-
-    }
-
-    .hero-content h1 {
-
-        font-size: 54px;
+        .hero-content {
+            left: auto;
+            right: auto;
+            position: relative;
+            bottom: auto;
+            padding: 0 40px;
+            max-width: 100%;
+            margin-top: 140px;
 
     }
 
@@ -606,13 +599,37 @@ FEATURED GALLERY
         gap: 40px;
 
     }
-
+.project-category {
+   display: inline-block;
+        padding: 20px 30px;
+        border: 0px solid rgb(255 255 255);
+        backdrop-filter: blur(20px);
+        border-radius: 50px;
+        font-size: 24px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: #57241b61;
+        font-weight: 500;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgb(39 22 13 / 27%), rgb(0 0 0 / 36%));
+}
     .overview-grid {
 
         grid-template-columns:1fr;
 
         gap: 60px;
 
+    }
+      .project-meta span {
+        display: block;
+        color: #ffffff;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 44px;
     }
 
     .project-info {
@@ -623,6 +640,10 @@ FEATURED GALLERY
 
     }
 
+    .project-meta strong {
+    font-size: 44px;
+    font-weight: 500;
+}
     .project-content h2 {
 
         font-size: 46px;
@@ -653,6 +674,33 @@ FEATURED GALLERY
 
         height: 450px;
 
+    }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 78%;
+        background: var(--primary-dark);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 26px;
+        padding: 40px;
+        transform: translateX(100%);
+        transition: transform .5s ease;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        color: var(--white) !important;
+    }
+
+    .burger {
+        display: flex;
     }
 
 }
@@ -745,6 +793,33 @@ FEATURED GALLERY
 
         height: 320px;
 
+    }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 78%;
+        background: var(--primary-dark);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 26px;
+        padding: 40px;
+        transform: translateX(100%);
+        transition: transform .5s ease;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        color: var(--white) !important;
+    }
+
+    .burger {
+        display: flex;
     }
 
 }

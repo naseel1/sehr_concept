@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://sehrconcepts.com/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../img/faviocn.svg">
+    <link rel="icon" type="/img/png" href="../img/faviocn.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -50,7 +50,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"
           rel="stylesheet">
-    <link href="../css/sehr.css" rel="stylesheet" type="text/css">
+    <link href="https://www.sehrconcepts.com/css/sehr.css" rel="stylesheet" type="text/css">
     <link href="../css/project.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css">
     <!-- Structured Data -->
@@ -473,27 +473,215 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/Draggable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/InertiaPlugin.min.js"></script>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
     gsap.registerPlugin(ScrollTrigger);
-    document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Sehr Concepts. All rights reserved.';
 
-    /* ---------- Nav scroll state ---------- */
-    ScrollTrigger.create({
-        start: "top -80",
-        onUpdate: (self) => {
-            document
-                .getElementById("siteHeader")
-                .classList.toggle("scrolled", self.scroll() > 80);
-        }
+    /* ---------- Footer Year ---------- */
+    const year = document.getElementById("year");
+    if (year) {
+        year.textContent = "© " + new Date().getFullYear() + " Sehr Concepts. All rights reserved.";
+    }
+
+    /* ---------- Nav Scroll ---------- */
+    const header = document.getElementById("siteHeader");
+
+    if (header) {
+        ScrollTrigger.create({
+            start: "top -80",
+            onUpdate: self => {
+                header.classList.toggle("scrolled", self.scroll() > 80);
+            }
+        });
+    }
+
+    /* ---------- Mobile Menu ---------- */
+
+    const burger = document.getElementById("burger");
+    const navLinks = document.getElementById("navLinks");
+
+    if (burger && navLinks) {
+
+        burger.addEventListener("click", () => {
+            navLinks.classList.toggle("open");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+            });
+        });
+
+    }
+
+    /* ---------- Reveal ---------- */
+
+    if (document.querySelector(".reveal")) {
+
+        ScrollTrigger.batch(".reveal", {
+            start: "top 88%",
+            onEnter: batch => {
+                gsap.to(batch, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.12,
+                    ease: "power3.out"
+                });
+            }
+        });
+
+    }
+
+    /* ---------- Marquee ---------- */
+
+    const track = document.getElementById("marqueeTrack");
+
+    if (track) {
+
+        gsap.to(track, {
+            xPercent: -50,
+            duration: 20,
+            ease: "none",
+            repeat: -1
+        });
+
+    }
+
+    /* ---------- Project Cards ---------- */
+
+    document.querySelectorAll(".project-card").forEach(card => {
+
+        const img = card.querySelector(".render");
+        const icon = card.querySelector(".project-view");
+
+        card.addEventListener("mouseenter", () => {
+
+            if (img) {
+                gsap.to(img, {
+                    scale: 1.1,
+                    duration: .9,
+                    ease: "power3.out"
+                });
+            }
+
+            if (icon) {
+                gsap.fromTo(icon,
+                    {rotate: -45, y: -8},
+                    {
+                        rotate: 0,
+                        y: 0,
+                        duration: .5,
+                        ease: "back.out(2)"
+                    }
+                );
+            }
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            if (img) {
+                gsap.to(img, {
+                    scale: 1,
+                    duration: .9,
+                    ease: "power3.out"
+                });
+            }
+
+        });
+
     });
 
-    /* ---------- Mobile menu ---------- */
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        gsap.to(burger.children, {rotate: 0});
+    /* ---------- Services ---------- */
+
+    document.querySelectorAll(".service-card").forEach(card => {
+
+        const icon = card.querySelector(".service-icon");
+
+        if (!icon) return;
+
+        card.addEventListener("mouseenter", () => {
+
+            gsap.to(icon, {
+                rotate: -8,
+                scale: 1.1,
+                duration: .5,
+                ease: "back.out(2)"
+            });
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            gsap.to(icon, {
+                rotate: 0,
+                scale: 1,
+                duration: .5,
+                ease: "power2.out"
+            });
+
+        });
+
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    /* ---------- Magnetic Buttons ---------- */
+
+    document.querySelectorAll(".btn").forEach(btn => {
+
+        btn.addEventListener("mousemove", e => {
+
+            const r = btn.getBoundingClientRect();
+
+            gsap.to(btn, {
+                x: (e.clientX - r.left - r.width / 2) * .25,
+                y: (e.clientY - r.top - r.height / 2) * .4,
+                duration: .4,
+                ease: "power2.out"
+            });
+
+        });
+
+        btn.addEventListener("mouseleave", () => {
+
+            gsap.to(btn, {
+                x: 0,
+                y: 0,
+                duration: .5,
+                ease: "elastic.out(1,.4)"
+            });
+
+        });
+
+    });
+
+    /* ---------- About Parallax ---------- */
+
+    if (document.querySelector(".about-frame")) {
+
+        gsap.to(".about-frame", {
+
+            y: -30,
+
+            ease: "none",
+
+            scrollTrigger: {
+
+                trigger: ".about",
+
+                start: "top bottom",
+
+                end: "bottom top",
+
+                scrub: 1
+
+            }
+
+        });
+
+    }
+
+});
 </script>
 <script>
     document.getElementById('contactForm').addEventListener('submit', function (e) {
