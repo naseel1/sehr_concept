@@ -227,23 +227,23 @@
 <section class="about process-section" id="about">
     <div class="container about-grid">
         <div class="about-text">
-            <span class="eyebrow reveal">About Us</span>
+            <!--            <span class="eyebrow reveal">About Us</span>-->
             <h2 class="reveal" style="font-size:clamp(2rem,3.6vw,3rem);color:var(--primary-dark);margin-bottom:30px;">
-                Reimagining Realities: Visualization Redefined</h2>
-            <p class="reveal">Welcome to Sehr Concepts — where dreams become reality, and spaces come to life. We
-                believe that every space has the potential to inspire, delight, and enhance the lives of those who
-                inhabit it. With a passion for creativity and a commitment to excellence, we specialize in crafting
-                bespoke interiors that reflect our clients' unique personalities and lifestyles.</p>
-            <p class="reveal">Our team of designers brings a wealth of experience and expertise to every project, from
-                luxurious residential homes to dynamic commercial spaces. With a keen eye for detail and a dedication to
-                exceptional craftsmanship, we transform ordinary environments into extraordinary showcases of style and
-                sophistication.</p>
-            <p class="reveal">Driven by a deep understanding of design principles and a genuine desire to exceed
-                expectations, we collaborate closely with our clients to bring their visions to life. Whether it's
-                revamping a single room or redesigning an entire property, we approach each project with creativity,
-                integrity, and a relentless pursuit of perfection.</p>
-            <p class="reveal">Join us on a journey of inspiration, innovation, and imagination as we redefine the art of
-                interior design.</p>
+                About Us</h2>
+            <p class="reveal">SEHR Concepts was founded by two passionate designers with a shared vision of creating
+                spaces that are thoughtful, timeless, and truly personal. With years of experience across residential,
+                commercial, and hospitality projects, we built our studio to deliver design solutions that combine
+                creativity, functionality, and attention to detail. We believe every space should reflect the people who
+                use it.</p>
+            <p class="reveal">That's why we take the time to understand your vision, lifestyle, and budget before
+                transforming
+                your ideas into beautifully designed spaces. From architectural planning and interior design to 3D
+                visualizations and turnkey execution, we provide a seamless design experience from concept to
+                completion.</p>
+            <p class="reveal"> At SEHR Concepts, we don't just design interiors—we create spaces that inspire, perform,
+                and
+                feel like home.</p>
+
         </div>
         <div class="about-frame reveal">
             <q>“At Sehr Concepts, we don't just create beautiful spaces — we create lasting impressions.”</q>
@@ -293,20 +293,22 @@
                 commercial interiors.</p>
         </div>
         <div class="project-grid">
-            <div class="project-card reveal ">
-                <div class="render r1"></div>
-                <div class="project-view">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M7 17L17 7M17 7H9M17 7v8"/>
-                    </svg>
+            <a href="/projects/retail-interior" class="project-link">
+                <div class="project-card reveal ">
+                    <div class="render r1"></div>
+                    <div class="project-view">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M7 17L17 7M17 7H9M17 7v8"/>
+                        </svg>
+                    </div>
+                    <div class="project-base">
+                        <small>Retail Interior Design</small>
+                        <h4> Editorial Contemporary Retail</h4>
+                        <p class="project-desc">A 2,000 sq.ft boutique retail space in Thrissur featuring warm
+                            terracotta tones, terrazzo flooring, brass detailing</p>
+                    </div>
                 </div>
-                <div class="project-base">
-                    <small>Residential</small>
-                    <h4>Living Room</h4>
-                    <p class="project-desc">A sunlit lounge balancing warm minimalism with tactile textures and
-                        considered negative space.</p>
-                </div>
-            </div>
+            </a>
             <div class="project-card reveal">
                 <div class="render r2"></div>
                 <div class="project-view">
@@ -451,6 +453,39 @@
                 <h3>Turnkey Projects </h3>
                 <p>End-to-end execution from groundwork to final handover —construction, material sourcing, and
                     installation managed under one roof, delivered fully finished and move-in ready.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-num">03</span>
+                <svg class="service-icon"
+                     viewBox="0 0 48 48"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.3"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <!-- Blueprint -->
+                    <rect x="8" y="8" width="32" height="32"/>
+
+                    <!-- Plan lines -->
+                    <path d="M16 8v32"/>
+                    <path d="M8 16h32"/>
+                    <path d="M24 16v24"/>
+                    <path d="M16 24h8"/>
+                    <path d="M24 32h8"/>
+
+                    <!-- Compass -->
+                    <circle cx="34" cy="14" r="2"/>
+                    <path d="M34 16l-2 6"/>
+                    <path d="M34 16l2 6"/>
+
+                </svg>
+                <h3>Project Management</h3>
+                <p>Our project management service ensures your interior project is executed smoothly from start to
+                    finish. We coordinate with contractors, vendors, and suppliers, manage timelines and budgets,
+                    monitor quality, and oversee every stage of execution. With clear communication and attention to
+                    detail, we ensure your design is delivered exactly as envisioned—on time and with complete peace of
+                    mind.</p>
             </div>
         </div>
     </div>
@@ -710,14 +745,48 @@
     document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Sehr Concepts. All rights reserved.';
 
     /* ---------- Preloader ---------- */
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
+
         const tl = gsap.timeline();
-        tl.to('#preloader span', {opacity: 0, y: -16, duration: .5, delay: .3})
-            .to('#preloader', {yPercent: -100, duration: .9, ease: 'power4.inOut'}, '-=.1')
-            .set('#preloader', {display: 'none'})
-            .from('.slide.active .eyebrow, .slide.active h1 .line span, .slide.active p, .slide.active .btn', {
-                opacity: 0, y: 40, duration: 1, stagger: 0.12, ease: 'power3.out'
-            }, '-=.5');
+
+        tl.fromTo(".logo-wrap img",
+            {
+                opacity: 0,
+                scale: .85
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 1.2,
+                ease: "power3.out"
+            }
+        )
+
+            .to(".logo-wrap img", {
+                clipPath: "inset(0 0% 0 0)",
+
+                duration: 1.4,
+
+                ease: "power3.out"
+            })
+
+            .to(".logo-wrap", {
+                opacity: 0,
+                scale: .96,
+                duration: .7,
+                ease: "power2.inOut"
+            })
+
+            .to("#preloader", {
+                opacity: 0,
+                duration: .6,
+                ease: "power2.out"
+            })
+
+            .set("#preloader", {
+                display: "none"
+            });
+
     });
 
     /* ---------- Nav scroll state ---------- */
