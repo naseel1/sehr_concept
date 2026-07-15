@@ -435,7 +435,7 @@ header.scrolled .burger span {
 
 .slide3 .slide-bg {
     background: linear-gradient(100deg, rgba(36, 16, 22, 0.88) 0%, rgba(58, 18, 32, 0.72) 40%, rgba(58, 18, 32, 0.4) 75%),
-    url('/img/slider3.webp?auto=format&fit=crop&w=1800&q=80') center/cover;
+    url('/img/slide-img.webp?auto=format&fit=crop&w=1800&q=80') center/cover;
 
 }
 
