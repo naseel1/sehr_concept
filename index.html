@@ -854,6 +854,14 @@
 
             .set("#preloader", {
                 display: "none"
+            })
+
+            .call(() => {
+
+                animateFirstSlide();
+
+                resetAutoplay();
+
             });
 
     });
@@ -886,13 +894,43 @@
 
     // Initial state
     slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === 0);
-        gsap.set(slide, {opacity: i === 0 ? 1 : 0});
 
-        const bg = slide.querySelector(".slide-bg");
-        if (bg) {
-            gsap.set(bg, {scale: 1.12});
+        slide.classList.toggle("active", i === 0);
+
+        if (i === 0) {
+
+            gsap.set(slide, {
+                opacity: 0
+            });
+
+            gsap.set(slide.querySelector(".slide-bg"), {
+                scale: 1.18
+            });
+
+            gsap.set(
+                slide.querySelectorAll(".eyebrow, h1 .line span, p, .btn"),
+                {
+                    opacity: 0,
+                    y: 25
+                }
+            );
+
+        } else {
+
+            gsap.set(slide, {
+                opacity: 0
+            });
+
+            const bg = slide.querySelector(".slide-bg");
+
+            if (bg) {
+                gsap.set(bg, {
+                    scale: 1.12
+                });
+            }
+
         }
+
     });
 
     dots.forEach((dot, i) => {
@@ -972,6 +1010,38 @@
         goTo((current + 1) % slides.length);
     }
 
+    function animateFirstSlide() {
+
+        const firstSlide = slides[0];
+
+        const tl = gsap.timeline();
+
+        tl.to(firstSlide, {
+            opacity: 1,
+            duration: .8,
+            ease: "power2.out"
+        })
+
+            .to(firstSlide.querySelector(".slide-bg"), {
+                scale: 1.12,
+                duration: 1.8,
+                ease: "power2.out"
+            }, 0)
+
+            .to(
+                firstSlide.querySelectorAll(".eyebrow, h1 .line span, p, .btn"),
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: .9,
+                    stagger: .12,
+                    ease: "power3.out"
+                },
+                .3
+            );
+
+    }
+
     function resetAutoplay() {
         clearInterval(autoplay);
         autoplay = setInterval(nextSlide, 6000);
@@ -983,11 +1053,6 @@
             goTo(Number(dot.dataset.i));
             resetAutoplay();
         });
-    });
-
-    // Start autoplay after page is fully loaded
-    window.addEventListener("load", () => {
-        resetAutoplay();
     });
 
     /* ---------- Scroll reveal ---------- */

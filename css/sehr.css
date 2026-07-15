@@ -253,7 +253,7 @@ header.scrolled .burger span {
     height: 100vh;
     min-height: 640px;
     overflow: hidden;
-    background: #381e248a url("../img/sehr1.webp");
+    background: #381e248a ;
 }
 
 /*==========================
