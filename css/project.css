@@ -812,6 +812,9 @@ FEATURED GALLERY
     .footer-grid {
         grid-template-columns:1fr 1fr;
     }
+    .gallery-item img{
+        object-position: top center !important;
+    }
 }
 
 @media (max-width: 600px) {
